@@ -4,8 +4,7 @@ const path = require('path')
 var foo = new UpYunTool({
     bucket: 'bucket',
     operator: 'operator',
-    password: 'password',
-    console: false
+    password: 'password'
 })
 
 function sleep(delay) {
@@ -98,17 +97,20 @@ async function start() {
     result = await foo.deleteFile(remotePath + '/foo/sub/foo3.jpg')
     console.log(result)
 
-    await sleep(3000)
-
-    console.log('# removeDir '+ remotePath + '/foo/sub')
-    result = await foo.removeDir(remotePath + '/foo/sub')
-    console.log(result)
-
     console.log('# deleteFile ' + remotePath + '/foo/foo.js')
     result = await foo.deleteFile(remotePath + '/foo/foo.js')
     console.log(result)
 
-    await sleep(3000)
+    await sleep(5000)
+
+    console.log('# removeDir '+ remotePath + '/foo/sub')
+    try {
+        result = await foo.removeDir(remotePath + '/foo/sub')
+        console.log(result)
+    } catch(ex) {
+        result = await foo.removeDir(remotePath + '/foo/sub')
+        console.log(result)
+    }
 
     console.log('# removeDir '+ remotePath + '/foo')
     result = await foo.removeDir(remotePath + '/foo')

@@ -99,10 +99,10 @@ class UpYunTool {
             this.upyun.putFile(remotePath, localFile, type, checksum, opts, (err, result) => {
                 if (!err && result && result.statusCode === 200) {
                     if (this.console) console.log('[OK]putFile: ' + remotePath)
-                    resolve(1)
+                    resolve(remotePath)
                 } else {
                     if (this.console) console.log('putFile fail: ' + remotePath)
-                    reject(0)
+                    reject(result)
                 }
             })
         })
@@ -177,11 +177,15 @@ class UpYunTool {
             }
             return Promise.all(arrSubP)
         }).then((results) => {
-            let sum = 0;
-            results.forEach((count) => {
-                sum += count
+            let paths = [];
+            results.forEach((result) => {
+                if (typeof result === 'string') {
+                    paths.push(result)
+                } else {
+                    paths.push.apply(paths, result)
+                }
             })
-            return sum
+            return paths
         })
     }
 }
