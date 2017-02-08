@@ -7,6 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Danny Lin",
+  "homepage": "https://github.com/tiennan/upyun-tool",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tiennan/upyun-tool.git"
+  },
   "license": "MIT",
   "dependencies": {
     "fs-promise": "^1.0.0",
