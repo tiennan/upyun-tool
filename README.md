@@ -5,6 +5,8 @@ Please see the upyun official SDK document first
 
 * https://github.com/upyun/node-sdk
 
+upyun-tool promise化了upyun SDK提供的API，并新增`putDir`方法一次性上传完整目录结构
+
 # Install
 ```
 $ npm install upyun-tool --save
@@ -27,3 +29,27 @@ start()
 ```
 
 More example please see ./test/test.js
+
+# API
+
+### putDir(remotePath, localPath)
+
+上传完整目录结构
+
+__参数__
+
+* `remotePath` 欲创建的目录路径
+* `localPath` 本地目录路径
+
+__响应__
+
+```
+33
+```
+
+__示例__
+
+```
+result = await foo.putDir(remotePath + '/foo', path.join(__dirname, 'foo'))
+console.log(result)
+```
