@@ -44,7 +44,11 @@ __参数__
 __响应__
 
 ```
-33
+[ '/upyun-tool-test-folder/foo/foo.js',
+  '/upyun-tool-test-folder/foo/sub/foo1.css',
+  '/upyun-tool-test-folder/foo/sub/foo2.svg',
+  '/upyun-tool-test-folder/foo/sub/foo3.jpg'
+]
 ```
 
 __示例__
